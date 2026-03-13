@@ -5,7 +5,7 @@ import '../providers/dosen_provider.dart';
 import '../widgets/dosen_widget.dart';
 
 class DosenPage extends ConsumerWidget {
-  const DosenPage({super.key});
+  const DosenPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -34,25 +34,10 @@ class DosenPage extends ConsumerWidget {
           },
         ),
         data: (dosenList) {
-          return RefreshIndicator(
-            onRefresh: () async {
-              ref.invalidate(dosenNotifierProvider);
-            },
-            child: ListView.builder(
-              padding: const EdgeInsets.all(20),
-              itemCount: dosenList.length,
-              itemBuilder: (context, index) {
-                final colors = [
-                  [const Color(0xFFF667EE), const Color(0xFF764BA2)],
-                  [const Color(0xFFF093FB), const Color(0xFFF5576C)],
-                  [const Color(0xFF4FACFE), const Color(0xFF00F2FE)],
-                ];
-                return ModernDosenCard(
-                  dosen: dosenList[index],
-                  gradientColors: colors[index % colors.length],
-                );
-              },
-            ),
+          return DosenListView(
+            dosenList: dosenList,
+            onRefresh: () => ref.read(dosenNotifierProvider.notifier).refresh(),
+            useModernCard: true,
           );
         },
       ),

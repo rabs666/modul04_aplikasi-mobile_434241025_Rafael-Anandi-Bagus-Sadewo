@@ -10,7 +10,7 @@ import '../providers/dashboard_provider.dart';
 import '../widgets/dashboard_widgets.dart';
 
 class DashboardPage extends ConsumerWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+  const DashboardPage({super.key});
 
   // Fungsi untuk mendapatkan icon berdasarkan judul stat sesuai foto 11a
   IconData _getIconForStat(String title) {
