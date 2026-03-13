@@ -10,36 +10,36 @@ class DashboardNotifier extends StateNotifier<AsyncValue<DashboardData>> {
   Future<void> _fetchData() async {
     state = const AsyncValue.loading();
     try {
-      // Simulasi fetch data dari API
+      // Simulasi fetch data
       await Future.delayed(const Duration(milliseconds: 800));
       
       final stats = [
         DashboardStats(
           title: "Total Mahasiswa", 
-          value: "1,234", 
-          subtitle: "8.5% Mahasiswa terdaf...", 
+          value: "1,200", 
+          subtitle: "Total Mahasiswa terdaftar", 
           percentage: 8.5, 
           isIncrease: true
         ),
         DashboardStats(
           title: "Mahasiswa Aktif", 
-          value: "1,180", 
-          subtitle: "5.2% Sedang kuliah", 
+          value: "550", 
+          subtitle: "Mahasiswa sedang kuliah", 
           percentage: 5.2, 
           isIncrease: true
         ),
         DashboardStats(
-          title: "Jumlah Kelas", 
-          value: "48", 
-          subtitle: "2.1% Kelas semester ini", 
+          title: "Dosen", 
+          value: "650", 
+          subtitle: "Dosen aktif mengajar", 
           percentage: 2.1, 
-          isIncrease: false
+          isIncrease: true
         ),
         DashboardStats(
-          title: "Tingkat Kelulusan", 
-          value: "94%", 
-          subtitle: "3.5% Tahun ini", 
-          percentage: 3.5, 
+          title: "Profile", 
+          value: "", 
+          subtitle: "Informasi Akun", 
+          percentage: 0, 
           isIncrease: true
         ),
       ];
@@ -68,5 +68,4 @@ final dashboardNotifierProvider =
 });
 
 // Provider untuk index yang dipilih
-// Set index 0 agar kartu pertama terpilih seperti di gambar
-final selectedStatIndexProvider = StateProvider<int>((ref) => 0);
+final selectedStatIndexProvider = StateProvider<int>((ref) => -1);
